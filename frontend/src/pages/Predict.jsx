@@ -33,7 +33,7 @@ export default function Predict() {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    ws.current = new WebSocket(`ws://localhost:8000/api/ws/predict?token=${token}`)
+    ws.current = new WebSocket(`wss://edumind-ai-wib1.onrender.com/api/ws/predict?token=${token}`)
     ws.current.onopen = () => setWsReady(true)
     ws.current.onmessage = (e) => {
       const data = JSON.parse(e.data)
