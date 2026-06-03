@@ -16,11 +16,30 @@ def hash_password(password: str) -> str:
 
 def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
-
 def create_token(data: dict) -> str:
     to_encode = data.copy()
     to_encode["exp"] = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+def create_reset_token(email: str):
+    data = {
+        "email": email,
+        "type": "reset",
+        "exp": datetime.utcnow() + timedelta(minutes=15)
+    }
+    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def verify_reset_token(token: str):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+
+        if payload.get("type") != "reset":
+            return None
+
+        return payload["email"]
+
+    except JWTError:
+        return None
 
 def decode_token(token: str):
     try:

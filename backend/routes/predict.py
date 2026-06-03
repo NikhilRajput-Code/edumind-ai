@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, WebSocket, WebSocketDisconnect, Query
 from pydantic import BaseModel
 import joblib, numpy as np, json, os, asyncio
-from backend.auth import get_current_user, decode_token
-from backend.database import get_db
+from auth import get_current_user, decode_token
+from database import get_db
 
 router = APIRouter()
 
