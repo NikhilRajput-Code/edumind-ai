@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-jose[cryptography]
+bcrypt==4.0.1
+passlib
+python-multipart
+pandas
+scikit-learn
+xgboost
+joblib
+websockets
+aiofiles
+numpy
