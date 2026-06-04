@@ -1,30 +1,33 @@
-<div align="center">
+# 🎓 EduMind AI — Student Performance Prediction SaaS
 
-# 🎓 EduMind AI
+> AI-powered full-stack platform that predicts whether a student will **PASS or FAIL** using Machine Learning — enabling educators to intervene early before outcomes become irreversible.
 
-### AI-Powered Student Performance Prediction Platform
-
-![Python](https://img.shields.io/badge/Python-3.14-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![XGBoost](https://img.shields.io/badge/XGBoost-99.5%25_Accuracy-FF6600?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-
-</div>
+🌐 **Live Demo:** [https://edumind-ai-nikhil.netlify.app](https://edumind-ai-nikhil.netlify.app)
+📡 **API Docs:** [https://edumind-ai-wib1.onrender.com/docs](https://edumind-ai-wib1.onrender.com/docs)
+💻 **GitHub:** [https://github.com/NikhilRajput-Code/edumind-ai](https://github.com/NikhilRajput-Code/edumind-ai)
 
 ---
 
-## ✨ What is EduMind AI?
+## 📸 Screenshots
 
-**EduMind AI** is a full-stack machine learning web application that predicts whether a student will **pass or fail** based on key academic and personal factors — enabling educators to **intervene early** before outcomes become irreversible.
+### 🏠 Landing Page
+![Landing Page]https://ibb.co/xtW19Z3c
+
+### 📊 Dashboard
+![Dashboard]https://ibb.co/B2bXqYKQ
+
+### 🧠 Live Prediction
+![Prediction]https://ibb.co/rGJxZ8Px
+
+### 📁 Bulk Upload
+![Upload]https://ibb.co/1YJKsRXy
 
 ---
 
-## 🎯 Key Features
+## ✨ Features
 
 | Feature | Description |
-|---------|-------------|
+|---|---|
 | 🧠 AI Predictions | XGBoost + Random Forest ensemble, **99.5% accuracy** |
 | ⚡ Live WebSocket | Real-time predictions, instant PASS/FAIL result |
 | 📁 Bulk CSV Upload | Predict thousands of students at once |
@@ -37,44 +40,82 @@
 ## 📊 ML Model Performance
 
 | Model | Accuracy |
-|-------|----------|
+|---|---|
 | ✅ Random Forest | **99.50%** |
-| ✅ XGBoost | 99.45% |
+| ✅ XGBoost (Tuned) | **99.45%** |
 | ✅ Logistic Regression | 99.35% |
+
+### Feature Importance
+| Feature | Importance |
+|---|---|
+| assignments_done | 0.35 ⭐ highest |
+| study_hours | 0.22 |
+| prev_grade | 0.20 |
+| attendance | 0.18 |
+| sleep_hours | 0.05 |
 
 ---
 
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
+|---|---|
 | Frontend | React 18, Vite, Tailwind CSS, Framer Motion, Chart.js |
 | Backend | FastAPI, Python, SQLite, WebSockets |
-| ML | XGBoost, Random Forest, Scikit-learn |
-| Auth | JWT, bcrypt |
+| ML | XGBoost, Random Forest, Scikit-learn, Pandas, NumPy |
+| Auth | JWT (python-jose), bcrypt, passlib |
+| Deployment | Netlify (frontend) + Render (backend) |
+| CI/CD | GitHub → Render auto-deploy |
 
+---
+
+## 🗂️ Project Structure
+edumind/
+├── backend/
+│   ├── main.py              # FastAPI app + auth routes
+│   ├── auth.py              # JWT token logic
+│   ├── database.py          # SQLite setup
+│   ├── ml/model/model.pkl   # Trained XGBoost model
+│   └── routes/
+│       ├── predict.py       # /predict + WebSocket
+│       ├── upload.py        # /upload CSV
+│       └── dashboard.py     # /dashboard analytics
+├── frontend/
+│   └── src/
+│       ├── pages/
+│       │   ├── Landing.jsx
+│       │   ├── Dashboard.jsx
+│       │   ├── Predict.jsx
+│       │   └── Upload.jsx
+│       └── components/
+│           └── Navbar.jsx
+├── requirements.txt
+├── render.yaml
+└── .python-version
 ---
 
 ## 🚀 API Endpoints
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/auth/register` | Register new user |
-| `POST` | `/api/auth/login` | Login user |
-| `POST` | `/api/predict` | Single prediction |
-| `WS` | `/api/ws/predict` | WebSocket live prediction |
-| `POST` | `/api/upload` | Bulk CSV upload |
-| `GET` | `/api/dashboard` | Analytics data |
+|---|---|---|
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | Login + get JWT token |
+| POST | `/api/predict` | Single student prediction |
+| WS | `/api/ws/predict` | WebSocket live prediction |
+| POST | `/api/upload` | Bulk CSV prediction |
+| GET | `/api/dashboard` | Analytics data |
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Local Setup
 
 ### Backend
 ```bash
+git clone https://github.com/NikhilRajput-Code/edumind-ai.git
+cd edumind-ai
 python3 -m venv venv
 source venv/bin/activate
-pip install fastapi uvicorn python-jose bcrypt python-multipart pandas scikit-learn xgboost joblib websockets aiofiles
+pip install -r requirements.txt
 python -m uvicorn backend.main:app --reload --port 8000
 ```
 
@@ -85,4 +126,16 @@ npm install
 npm run dev
 ```
 
-### Open
+Open **http://localhost:5173**
+
+---
+
+## 👨‍💻 Built By
+
+**Nikhil Rajput** — MCA Student, HBTU Kanpur
+📧 nikhilrajput7017@gmail.com
+🔗 [LinkedIn](https://linkedin.com) | [GitHub](https://github.com/NikhilRajput-Code)
+
+---
+
+⭐ If you found this useful, give it a star!
