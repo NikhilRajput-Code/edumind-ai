@@ -70,29 +70,7 @@
 ---
 
 ## 🗂️ Project Structure
-edumind/
-├── backend/
-│   ├── main.py              # FastAPI app + auth routes
-│   ├── auth.py              # JWT token logic
-│   ├── database.py          # SQLite setup
-│   ├── ml/model/model.pkl   # Trained XGBoost model
-│   └── routes/
-│       ├── predict.py       # /predict + WebSocket
-│       ├── upload.py        # /upload CSV
-│       └── dashboard.py     # /dashboard analytics
-├── frontend/
-│   └── src/
-│       ├── pages/
-│       │   ├── Landing.jsx
-│       │   ├── Dashboard.jsx
-│       │   ├── Predict.jsx
-│       │   └── Upload.jsx
-│       └── components/
-│           └── Navbar.jsx
-├── requirements.txt
-├── render.yaml
-└── .python-version
----
+
 
 ## 🚀 API Endpoints
 
