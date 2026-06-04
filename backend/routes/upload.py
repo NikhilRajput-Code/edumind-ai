@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 import pandas as pd, joblib, numpy as np, io, os, json
-from auth import get_current_user
-from database import get_db
+from backend.auth import get_current_user
+from backend.database import get_db
 
 router = APIRouter()
 
